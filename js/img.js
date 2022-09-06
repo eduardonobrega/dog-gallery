@@ -1,10 +1,16 @@
 export class img {
   static async get(breed = 'hound') {
     const endpoint = `https://dog.ceo/api/breed/${breed}/images/random/20`;
+    try {
+      const response = await fetch(endpoint).then((data) => data.json());
+      if(response.status == 'error') throw new Error('')
+      console.log()
 
-    const { message } = await fetch(endpoint).then((data) => data.json());
+      return response.message;
+    }catch(error) {
+      return error
+    }
 
-    return message;
   }
 
 

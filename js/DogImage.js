@@ -28,6 +28,11 @@ export class DogImage {
       if (e.key == 'Enter') {
         this.add();
       }
+
+    });
+    this.root.querySelector('header img').addEventListener('click', () => {
+      localStorage.clear('@dogs-img:');
+      this.load();
     });
   }
 
@@ -37,9 +42,9 @@ export class DogImage {
     try {
       if (value == '') throw new Error('Informe a raça do doguinho');
 
-      const dogs = await img.get(value)
-      
-      if (dogs.length > 0) {
+      const dogs = await img.get(value);
+
+      if (dogs.length) {
         this.dogs = [...dogs];
         this.update();
         this.save();
@@ -87,5 +92,4 @@ export class DogImage {
     const imgs = this.gallery.querySelectorAll('.card-img');
     imgs.forEach((img) => img.remove());
   }
-  
 }

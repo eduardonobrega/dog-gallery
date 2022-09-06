@@ -28,6 +28,10 @@ header {
   padding: 2rem 0;
 }
 
+header img {
+  cursor: pointer;
+}
+
 #search {
   display: flex;
   gap: 2rem;
